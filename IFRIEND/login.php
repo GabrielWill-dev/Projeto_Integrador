@@ -77,8 +77,12 @@
                             echo $msg_error;
                         ?>
                     </div>
+                    <div class="d-grid gap-2 d-md-block">
                     <button class="btn btn-success w-100"><i class="bi bi-box-arrow-in-right"></i> Entrar</button>
-                </form>
+                    <button class="btn w-100"><a href="frontend/register/registrar.php" class="btn btn-outline-success w-100">Registrar</a></button>
+                
+                    </div>
+                    </form>
             </div>
         </div>
     </div>
