@@ -77,7 +77,7 @@
                 alert(success);
                 // Redireciona após 3 segundos
                 setTimeout(() => {
-                    window.location.href = 'login.php';
+                    window.location.href = '../../login.php';
                 }, 3000);
             }
 
