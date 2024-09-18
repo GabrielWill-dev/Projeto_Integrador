@@ -1,5 +1,7 @@
 <?php
     include("./db/conexao.php");
+
+    
     session_start();
 
     if(isset($_SESSION["loginUser"]) and isset($_SESSION["senhaUser"]) ){
