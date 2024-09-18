@@ -133,7 +133,7 @@
 </div>
     </main>
     <footer class="container-fluid bg-dark text-light">
-        <div class="text-center">SIS Agendador v 1.0</div>
+        <div class="text-center">IFRIEND</div>
     </footer>
     <script src="./js/jquery.js"></script>
     <script src="./js/jquery.form.js"></script>

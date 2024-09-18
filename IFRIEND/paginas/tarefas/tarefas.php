@@ -1,6 +1,6 @@
 <?php
 
-    $txt_pesquisa = (isset($_POST['txt_pesquisa']))?$_POST['txt_pesquisa']:"";
+$txt_pesquisa = (isset($_POST['txt_pesquisa']))?$_POST['txt_pesquisa']:'';
 // Alterna entre status concluido ou não concluido 
 $idTarefa = (isset($_GET['idTarefa']))?$_GET['idTarefa'] :"";
 $statusTarefa =  (isset($_GET['statusTarefa']) and $_GET['statusTarefa']=='0')?'1':'0';

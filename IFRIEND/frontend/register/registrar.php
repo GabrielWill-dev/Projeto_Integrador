@@ -54,6 +54,9 @@
                         </div>
                     </div>
                     <button class="btn btn-success w-100"><i class="bi bi-box-arrow-in-right"></i> Registrar</button>
+                    <hr>
+                    <span class="d-flex justify-content-center">Ja possui registro?  <a href="../../login.php" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" style="text-decoration: none;">  Login</a></span>
+                
                 </form>
             </div>
         </div>

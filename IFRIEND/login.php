@@ -79,7 +79,8 @@
                     </div>
                     <div class="d-grid gap-2 d-md-block">
                     <button class="btn btn-success w-100"><i class="bi bi-box-arrow-in-right"></i> Entrar</button>
-                    <button class="btn w-100"><a href="frontend/register/registrar.php" class="btn btn-outline-success w-100">Registrar</a></button>
+                    <hr>
+                    <span class="d-flex justify-content-evenly">Ainda não possui uma conta?<a href="frontend/register/registrar.php" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" style="text-decoration: none;">Cadastre-se</a></span>
                 
                     </div>
                     </form>
