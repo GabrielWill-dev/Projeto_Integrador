@@ -13,7 +13,7 @@
         $rs = mysqli_query($conexao, $sql);
         $dados = mysqli_fetch_assoc($rs);
         $linha = mysqli_num_rows($rs);
-//
+
         if( $linha == 0 ) {
             session_unset();
             session_destroy();
@@ -141,7 +141,7 @@
     <script src="./js/jquery.form.js"></script>
     <script src="./js/upload.js"></script>
     <script src="./js/javascript-agendador.js"></script>
-<!-- Option 1: Bootstrap hahahaha Bundle with Popper -->
+<!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 <script src="./js/validation.js"></script>
 </body>
