@@ -45,7 +45,7 @@ if($rs){
   <p>A tarefa não pode ser atualizada.</p>
   <hr>
   <p class="mb-0">
-    <a href="?menuop=tarefas">Voltar para a lista de tarefas.</a>
+    <a href="?menuop=tarefas" >Voltar para a lista de tarefas.</a>
   </p>
 </div>
     <?php

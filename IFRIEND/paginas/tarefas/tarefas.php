@@ -1,14 +1,19 @@
 <?php
 
-$txt_pesquisa = (isset($_POST['txt_pesquisa']))?$_POST['txt_pesquisa']:'';
-// Alterna entre status concluido ou não concluido 
-$idTarefa = (isset($_GET['idTarefa']))?$_GET['idTarefa'] :"";
-$statusTarefa =  (isset($_GET['statusTarefa']) and $_GET['statusTarefa']=='0')?'1':'0';
+$txt_pesquisa = (isset($_POST['txt_pesquisa'])) ? $_POST['txt_pesquisa'] : '';
 
-$sql = "UPDATE cl203156.tbtarefas SET statusTarefa = {$statusTarefa} WHERE idTarefa = {$idTarefa}";
-$rs = mysqli_query($conexao, $sql);
-// ----------------------------------------------
+// Verifica se idTarefa e statusTarefa foram passados na URL
+$idTarefa = isset($_GET['idTarefa']) && !empty($_GET['idTarefa']) ? (int)$_GET['idTarefa'] : null;
+$statusTarefa = isset($_GET['statusTarefa']) && ($_GET['statusTarefa'] == '0' || $_GET['statusTarefa'] == '1') ? (int)$_GET['statusTarefa'] : null;
 
+if (!is_null($idTarefa) && !is_null($statusTarefa)) {
+    // Alterna o status da tarefa entre 0 e 1
+    $novoStatusTarefa = $statusTarefa == 0 ? 1 : 0;
+
+    // Executa o SQL de atualização
+    $sql = "UPDATE cl203156.tbtarefas SET statusTarefa = {$novoStatusTarefa} WHERE idTarefa = {$idTarefa}";
+    $rs = mysqli_query($conexao, $sql) or die("Erro ao atualizar a tarefa: " . mysqli_error($conexao));
+}
 ?>
 <header>
     <h3><i class="bi bi-list-task"></i> Tarefas</h3>
