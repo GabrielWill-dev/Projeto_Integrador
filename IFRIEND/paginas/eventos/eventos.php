@@ -1,12 +1,19 @@
 <?php
 
-    $txt_pesquisa = (isset($_POST['txt_pesquisa']))?$_POST['txt_pesquisa']:"";
+$txt_pesquisa = (isset($_POST['txt_pesquisa']))?$_POST['txt_pesquisa']:"";
 // Alterna entre status concluido ou não concluido 
-$idEvento = (isset($_GET['idEvento']))?$_GET['idEvento'] :"";
-$statusEvento =  (isset($_GET['statusEvento']) and $_GET['statusEvento']=='0')?'1':'0';
+$idEvento = isset($_GET['idEvento']) && !empty($_GET['idEvento']) ? (int)$_GET['idEvento'] : null;
+$statusEvento = isset($_GET['statusEvento']) && ($_GET['statusEvento'] == '0' || $_GET['statusEvento'] == '1') ? (int)$_GET['statusEvento'] : null;
 
-$sql = "UPDATE tbeventos SET statusEvento = {$statusEvento} WHERE idEvento = {$idEvento}";
-$rs = mysqli_query($conexao, $sql);
+
+if (!is_null($idEvento) && !is_null($statusEvento)) {
+    // Alterna o status da Evento entre 0 e 1
+    $novoStatusEvento = $statusEvento == 0 ? 1 : 0;
+
+    // Executa o SQL de atualização
+    $sql = "UPDATE cl203156.tbeventos SET statusEvento = {$novoStatusEvento} WHERE idEvento = {$idEvento}";
+    $rs = mysqli_query($conexao, $sql) or die("Erro ao atualizar a Evento: " . mysqli_error($conexao));
+}
 // ----------------------------------------------
 
 ?>
