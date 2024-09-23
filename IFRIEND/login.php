@@ -41,13 +41,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <title>Login - Agendador</title>
 </head>
-<body class="bg-secondary">
+<body class="bg-dark">
 
     <div class="container">
         <div class="row vh-100 align-items-center justify-content-center">
             <div class="col-10 col-sm-8 col-md-6 col-lg-4 p-4 bg-white shadow rounded">
                 <div class="row justify-content-center mb-4">
-                    <img src="./img/logo_agendador.png" alt="Agendador">
+                    <img src="./img/logo_agendado.png" alt="Agendador">
                 </div>
                 <form class="needs-validation" action="login.php" method="post" novalidate>
                     <div class="form-group mb-4">

@@ -43,13 +43,13 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a href="#" class="navbar-brand">
-                    <img src="./img/logo_agendador.png" alt="sis-Agendador" width="120">
+                    <img src="./img/logo_agendado.png" alt="iFriend" width="120">
                 </a>
 
                 <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item"><a href="index.php?menuop=home" class="nav-link active">Home</a></li>
-                        <li class="nav-item"><a href="index.php?menuop=contatos" class="nav-link">Contato</a></li>
+                        <li class="nav-item"><a href="index.php?menuop=contatos" class="nav-link">Dados</a></li>
                         <li class="nav-item"><a href="index.php?menuop=tarefas" class="nav-link">Tarefas</a></li>
                         <li class="nav-item"><a href="index.php?menuop=eventos" class="nav-link">Eventos</a></li>
                     </ul>
