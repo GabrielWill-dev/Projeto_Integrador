@@ -39,7 +39,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <title>Login - Agendador</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <title>Login - iFriend</title>
 </head>
 <body class="bg-dark">
 
@@ -47,7 +48,7 @@
         <div class="row vh-100 align-items-center justify-content-center">
             <div class="col-10 col-sm-8 col-md-6 col-lg-4 p-4 bg-white shadow rounded">
                 <div class="row justify-content-center mb-4">
-                    <img src="./img/logo_agendado.png" alt="iFriend">
+                    <img src="./img/iFriendatt.png" alt="iFriend">
                 </div>
                 <form class="needs-validation" action="login.php" method="post" novalidate>
                     <div class="form-group mb-4">
