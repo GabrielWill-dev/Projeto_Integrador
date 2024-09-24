@@ -1,8 +1,11 @@
 <?php
     include("./db/conexao.php");
 
-    
     session_start();
+    if(empty($_SESSION)){
+        header("Location login.php/");
+    } 
+
 
     if(isset($_SESSION["loginUser"]) and isset($_SESSION["senhaUser"]) ){
         $loginUser = $_SESSION["loginUser"];
@@ -49,14 +52,14 @@
                 <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item"><a href="index.php?menuop=home" class="nav-link active">Home</a></li>
-                        <li class="nav-item"><a href="index.php?menuop=contatos" class="nav-link">Dados</a></li>
                         <li class="nav-item"><a href="index.php?menuop=tarefas" class="nav-link">Tarefas</a></li>
                         <li class="nav-item"><a href="index.php?menuop=eventos" class="nav-link">Eventos</a></li>
                     </ul>
                     <div class="navbar-nav w-100 justify-content-end">
+                        <a href="index.php?menuop=dados" class="nav-link justify-content-end">
+                        <button type="button" class="btn btn-dark"><i class="bi bi-person "></i><?=$nomeUser?></button>
+                        </a>
                         <a href="logout.php" class="nav-link">
-                            <i class="bi bi-person"></i>
-                            <?=$nomeUser?> 
                             <button type="button" class="btn btn-dark">Sair <i class="bi bi-box-arrow-right"></i></button>
                         </a>
                     </div>
@@ -72,8 +75,8 @@
         case 'home':
             include("./paginas/home/home.php");
             break;
-        case 'contatos':
-            include("./paginas/contatos/contatos.php");
+        case 'dados':
+            include("./paginas/dados/dados.php");
             break;
         case 'cad-contato':
             include("./paginas/contatos/cad-contato.php");
