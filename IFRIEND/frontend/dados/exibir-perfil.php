@@ -1,19 +1,33 @@
 <?php
-$idContato = $_GET['loginUser'];
-$sql = "SELECT * FROM tbcontatos WHERE loginUser = '{$idContato}'";
-$rs = mysqli_query($conexao,$sql) or die("Erro ao recuperar os dados do registro." . mysqli_error($conexao));
+$nomeUser = isset($_GET['nomeUser']) ? $_GET['nomeUser'] : null;
+
+$loginUser = $_SESSION["loginUser"];
+$nomeUser = $_SESSION["nomeUser"];
+
+if ($nomeUser === null) {
+    die("ID do contato não foi fornecido.");
+}
+
+$sql = "SELECT * FROM cl203156.tbusuarios WHERE nomeUser = '{$nomeUser}'";
+$rs = mysqli_query($conexao, $sql) or die("Erro ao recuperar os dados do registro." . mysqli_error($conexao));
 
 $dados = mysqli_fetch_assoc($rs);
+
+if ($dados === null) {
+    die("Nenhum contato encontrado com esse ID.");
+}
 ?>
 
+
 <header>
-    <h3>Editar Contato</h3>
+    <h3>Editar Perfil</h3>
 </header>
 <div class="row">
 <div class="col-6" >
-    <form action="index.php?menuop=atualizar-contato" method="post">
-        <div class="mb-3 col-3">
-            <label class="form-label" for="nomeContato">ID</label>
+    <form action="index.php?menuop=atualizar-perfil" method="post">
+<!--
+    <div class="mb-3 col-3">
+            <label class="form-label" for="nomePerfil">ID</label>
             <div class="input-group">
                 <span class="input-group-text">
                     <i class="bi bi-key-fill"></i>
@@ -21,13 +35,14 @@ $dados = mysqli_fetch_assoc($rs);
             <input class="form-control" type="text" name="idContato" value="<?=$dados['idContato']?>" readonly>
             </div>
         </div>
+-->
         <div class="mb-3">
             <label class="form-label" for="nomeContato">Nome</label>
             <div class="input-group">
                 <span class="input-group-text">
                     <i class="bi bi-person-fill"></i>
                 </span>
-                <input class="form-control" type="text" name="nomeContato" value="<?=$dados['nomeContato']?>">
+                <input class="form-control" type="text" name="nomeContato" value="<?=$dados['nomeUser']?>">
             </div>
         </div>
         <div class="mb-3">
@@ -82,14 +97,14 @@ $dados = mysqli_fetch_assoc($rs);
 </div>
 <div class="col-6">
     <?php
-       if($dados["nomeFotoContato"]=="" || !file_exists('./paginas/contatos/fotos-contatos/'. $dados["nomeFotoContato"])){
+       if($dados["nomeFotoContato"]=="" || !file_exists('../../paginas/contatos/fotos-contatos/'. $dados["nomeFotoContato"])){
             $nomeFoto = "SemFoto.jpg";
        }else{
             $nomeFoto = $dados["nomeFotoContato"];
        }
     ?>
     <div class="mb-3">
-        <img id="foto-contato" class="img-fluid img-thumbnail" width="200" src="./paginas/contatos/fotos-contatos/<?=$nomeFoto?>" alt="Foto do Contato">
+        <img id="foto-contato" class="img-fluid img-thumbnail" width="200" src="../../paginas/contatos/fotos-contatos/<?=$nomeFoto?>" alt="Foto do Contato">
     </div>
 
     <div class="mb-3">

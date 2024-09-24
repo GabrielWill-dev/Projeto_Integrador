@@ -39,7 +39,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/estilo-padrao.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="shortcut icon" type="" href="img/favicon.ico" />
     <title>iFriend</title>
 </head>
 <body>
@@ -57,7 +57,7 @@
                         <li class="nav-item"><a href="index.php?menuop=eventos" class="nav-link">Eventos</a></li>
                     </ul>
                     <div class="navbar-nav w-100 justify-content-end">
-                        <a href="index.php?menuop=dados" class="nav-link justify-content-end">
+                        <a href="index.php?menuop=exibir-perfil" class="nav-link justify-content-end">
                         <button type="button" class="btn btn-dark"><i class="bi bi-person "></i><?=$nomeUser?></button>
                         </a>
                         <a href="logout.php" class="nav-link">
@@ -76,7 +76,7 @@
         case 'home':
             include("./paginas/home/home.php");
             break;
-        case 'dados':
+        case 'exibir-perfil2':
             include("./paginas/dados/dados.php");
             break;
         case 'cad-contato':
@@ -84,10 +84,13 @@
             break;   
         case 'inserir-contato':
                 include("./paginas/contatos/inserir-contato.php");
-                break;  
-        case 'editar-contato':
-                include("./paginas/contatos/editar-contato.php");
-                break; 
+                break;
+        case 'exibir-perfil':
+            include("./frontend/dados/exibir-perfil.php");
+            break;  
+//        case 'editar-contato':
+//              include("./paginas/contatos/editar-contato.php");
+//              break; 
         case 'atualizar-contato':
                 include("./paginas/contatos/atualizar-contato.php");
                 break;                                       
