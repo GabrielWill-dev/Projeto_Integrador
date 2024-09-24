@@ -43,7 +43,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a href="#" class="navbar-brand">
-                    <img src="./img/iFriend.png" alt="iFriend" width="120">
+                    <img src="./img/iFriendatt.png" alt="iFriend" width="120">
                 </a>
 
                 <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
