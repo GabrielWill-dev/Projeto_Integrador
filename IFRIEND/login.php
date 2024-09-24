@@ -3,6 +3,8 @@
     include "./db/conexao.php";
     // Verificação no banco de dados
 
+
+    
     $msg_error = "";
 
     if( isset($_POST["loginUser"]) &&  isset($_POST["senhaUser"])  ){
