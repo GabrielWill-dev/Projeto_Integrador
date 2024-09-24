@@ -34,7 +34,9 @@ if($rs){
   <p>Tarefa atualizada com sucesso.</p>
   <hr>
   <p class="mb-0">
-    <a href="?menuop=tarefas">Voltar para a lista de tarefas.</a>
+  <button type="button" class="btn btn-outline-secondary">
+    <a class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="?menuop=tarefas" style="text-decoration: none;"> Voltar para a lista de Tarefas.</a>
+    </button>
   </p>
 </div>
     <?php

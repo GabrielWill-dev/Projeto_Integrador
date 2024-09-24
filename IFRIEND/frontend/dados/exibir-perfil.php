@@ -25,116 +25,63 @@ if ($dados === null) {
 <div class="row">
 <div class="col-6" >
     <form action="index.php?menuop=atualizar-perfil" method="post">
-<!--
-    <div class="mb-3 col-3">
-            <label class="form-label" for="nomePerfil">ID</label>
-            <div class="input-group">
-                <span class="input-group-text">
-                    <i class="bi bi-key-fill"></i>
-                </span>
-            <input class="form-control" type="text" name="idContato" value="<?=$dados['idContato']?>" readonly>
-            </div>
-        </div>
--->
         <div class="mb-3">
-            <label class="form-label" for="nomeContato">Nome</label>
+            <label class="form-label" for="nomeUser">Nome</label>
             <div class="input-group">
                 <span class="input-group-text">
                     <i class="bi bi-person-fill"></i>
                 </span>
-                <input class="form-control" type="text" name="nomeContato" value="<?=$dados['nomeUser']?>">
+                <input class="form-control" type="text" name="nomeUser" value="<?=$dados['nomeUser']?>">
             </div>
         </div>
         <div class="mb-3">
-            <label class="form-label" for="emailContato">E-Mail</label>
+            <label class="form-label" for="emailUser">E-Mail</label>
             <div class="input-group">
                 <span class="input-group-text">@</span>
-                <input class="form-control" type="email" name="emailContato" value="<?=$dados['emailContato']?>">
+                <input class="form-control" type="email" name="emailUser" value="<?=$dados['emailUser']?>">
             </div>
         </div>
         <div class="mb-3">
-            <label class="form-label" for="telefoneContato">Telefone</label>
+            <label class="form-label" for="telefoneUser">Telefone</label>
             <div class="input-group">
                 <span class="input-group-text">
                     <i class="bi bi-telephone-fill"></i>
                 </span>
-                <input class="form-control" type="text" name="telefoneContato" value="<?=$dados['telefoneContato']?>">
+                <input class="form-control" type="text" name="telefoneUser" value="<?=$dados['telefoneUser']?>">
             </div>
         </div>
         <div class="mb-3">
-            <label class="form-label" for="enderecoContato">Endereço</label>
+            <label class="form-label" for="enderecoUser">Endereço</label>
             <div class="input-group">
                 <span class="input-group-text">
                     <i class="bi bi-mailbox2"></i>
                 </span>
-                <input class="form-control" type="text" name="enderecoContato" value="<?=$dados['enderecoContato']?>">
+                <input class="form-control" type="text" name="enderecoUser" value="<?=$dados['enderecoUser']?>">
             </div>
         </div>
         <div class="row mb-3">
                         <div class="mb-3 col-3">
-                            <label class="form-label" for="sexoContato">Sexo</label>
+                            <label class="form-label" for="sexoUser">Sexo</label>
                             <div class="input-group">
                                 <span class="input-group-text">
                                     <i class="bi bi-gender-ambiguous"></i>
                                 </span>
-                            <select class="form-select"  name="sexoContato" id="sexoContato">
-                                <option <?php echo ($dados['sexoContato']=='')?'selected':'' ?> value="">Selecione o genero do Contato</option>
-                                <option <?php echo ($dados['sexoContato']=='M')?'selected':''?> value="M">Masculino</option>
-                                <option <?php echo ($dados['sexoContato']=='F')?'selected':''?> value="F">Feminino</option>
-                                <option <?php echo ($dados['sexoContato']=='O')?'selected':''?> value="O">Outros</option>
+                            <select class="form-select"  name="sexoUser" id="sexoUser">
+                                <option <?php echo ($dados['sexoUser']=='')?'selected':'' ?> value="">Selecione o genero</option>
+                                <option <?php echo ($dados['sexoUser']=='M')?'selected':''?> value="M">Masculino</option>
+                                <option <?php echo ($dados['sexoUser']=='F')?'selected':''?> value="F">Feminino</option>
+                                <option <?php echo ($dados['sexoUser']=='O')?'selected':''?> value="O">Outros</option>
                             </select>
                             </div>
                         </div>
                         <div class="mb-3 col-3">
-                            <label class="form-label" for="dataNascContato">Data de Nasc.</label>
-                            <input class="form-control" type="date" name="dataNascContato" value="<?=$dados['dataNascContato']?>">
+                            <label class="form-label" for="dataNascUser">Data de Nasc.</label>
+                            <input class="form-control" type="date" name="dataNascUser" value="<?=$dados['dataNascUser']?>">
                         </div>
                         </div>
         <div class="mb-3">
             <input class="btn btn-warning" type="submit" value="Atualizar" name="btnAtualizar">
         </div>
     </form>
-</div>
-<div class="col-6">
-    <?php
-       if($dados["nomeFotoContato"]=="" || !file_exists('../../paginas/contatos/fotos-contatos/'. $dados["nomeFotoContato"])){
-            $nomeFoto = "SemFoto.jpg";
-       }else{
-            $nomeFoto = $dados["nomeFotoContato"];
-       }
-    ?>
-    <div class="mb-3">
-        <img id="foto-contato" class="img-fluid img-thumbnail" width="200" src="../../paginas/contatos/fotos-contatos/<?=$nomeFoto?>" alt="Foto do Contato">
-    </div>
-
-    <div class="mb-3">
-        <button class="btn btn-info" id="btn-editar-foto">
-            <i class="bi bi-camera-fill"></i> Editar Foto
-        </button>
-    </div>
-    <div id="editar-foto">
-                <form id="form-upload-foto" class="mb-3" action="" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="idContato" value="<?=$idContato?>">
-                <label class="form-label" for="arquivo">Selecione um arquivo de imagem da foto</label>
-                    <div class="input-group">
-                        <input class="form-control" type="file" name="arquivo" id="arquivo">
-                        <input id="btn-enviar-foto" class="btn btn-secondary" type="submit" value="Enviar">
-                    </div>
-
-                </form>
-                <div id="mensagem" class="mb-3 alert alert-success">
-                    
-                </div>
-                <div id="preloader" class="progress">
-                    <div id="barra"
-                    class="progress-bar bg-danger" 
-                    role="progressbar" 
-                    style="width: 0%" 
-                    aria-valuenow="0" 
-                    aria-valuemin="0" 
-                    aria-valuemax="100">0%</div>
-                </div>  
-    </div>
-                
 </div>
 </div>

@@ -34,7 +34,9 @@ if($rs){
   <p>Evento atualizada com sucesso.</p>
   <hr>
   <p class="mb-0">
-    <a href="?menuop=eventos">Voltar para a lista de Eventos.</a>
+  <button type="button" class="btn btn-outline-secondary">
+    <a class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="?menuop=eventos" style="text-decoration: none;"> Voltar para a lista de Eventos.</a>
+    </button>
   </p>
 </div>
     <?php
@@ -45,7 +47,9 @@ if($rs){
   <p>A Evento não pode ser atualizada.</p>
   <hr>
   <p class="mb-0">
-    <a href="?menuop=eventos">Voltar para a lista de Eventos.</a>
+  <button type="button" class="btn btn-outline-secondary">
+    <a class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="?menuop=eventos" style="text-decoration: none;"> Voltar para a lista de Eventos.</a>
+    </button>
   </p>
 </div>
     <?php

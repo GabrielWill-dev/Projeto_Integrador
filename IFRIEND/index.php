@@ -91,8 +91,8 @@
 //        case 'editar-contato':
 //              include("./paginas/contatos/editar-contato.php");
 //              break; 
-        case 'atualizar-contato':
-                include("./paginas/contatos/atualizar-contato.php");
+        case 'atualizar-perfil':
+                include("./backend/dados/atualizar-perfil.php");
                 break;                                       
         case 'excluir-contato':
                 include("./paginas/contatos/excluir-contato.php");
