@@ -56,7 +56,8 @@
                     <div class="navbar-nav w-100 justify-content-end">
                         <a href="logout.php" class="nav-link">
                             <i class="bi bi-person"></i>
-                            <?=$nomeUser?> Sair <i class="bi bi-box-arrow-right"></i>
+                            <?=$nomeUser?> 
+                            <button type="button" class="btn btn-dark">Sair <i class="bi bi-box-arrow-right"></i></button>
                         </a>
                     </div>
                 </div>
