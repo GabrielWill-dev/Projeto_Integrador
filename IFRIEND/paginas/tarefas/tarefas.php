@@ -81,9 +81,9 @@ if (!is_null($idTarefa) && !is_null($statusTarefa)) {
                 <a class="btn btn-secondary btn-sm" href="index.php?menuop=tarefas&pagina=<?=$pagina?>&idTarefa=<?=$dados['idTarefa']?>&statusTarefa=<?=$dados['statusTarefa']?>" >
                     <?php
                         if($dados['statusTarefa']==0){
-                            echo '<i class="bi bi-square"></i>';
+                            echo '<button type="button" class="btn btn-danger">Não Concluido</button>';
                         }else{
-                            echo '<i class="bi bi-check-square"></i>';
+                            echo '<button type="button" class="btn btn-success">Concluido</button>';
                         }
                     ?>
                 </a>   
