@@ -7,8 +7,8 @@
 <?php
 $tituloTarefa = strip_tags( mysqli_real_escape_string($conexao,$_POST['tituloTarefa']));
 $descricaoTarefa = strip_tags( mysqli_real_escape_string($conexao,$_POST['descricaoTarefa']));
+$dataInicioTarefa = strip_tags( mysqli_real_escape_string($conexao,$_POST['dataInicioTarefa']));
 $dataConclusaoTarefa = strip_tags( mysqli_real_escape_string($conexao,$_POST['dataConclusaoTarefa']));
-$horaConclusaoTarefa = strip_tags( mysqli_real_escape_string($conexao,$_POST['horaConclusaoTarefa']));
 $dataLembreteTarefa = strip_tags( mysqli_real_escape_string($conexao,$_POST['dataLembreteTarefa']));
 $horaLembreteTarefa = strip_tags( mysqli_real_escape_string($conexao,$_POST['horaLembreteTarefa']));
 $recorrenciaTarefa = strip_tags( mysqli_real_escape_string($conexao,$_POST['recorrenciaTarefa']));
@@ -17,8 +17,8 @@ $sql = "INSERT INTO tbtarefas
 (
     tituloTarefa,
     descricaoTarefa,
+    dataInicioTarefa,
     dataConclusaoTarefa,
-    horaConclusaoTarefa,
     dataLembreteTarefa,
     horaLembreteTarefa,
     recorrenciaTarefa
@@ -27,8 +27,8 @@ VALUES
 (
     '{$tituloTarefa}',
     '{$descricaoTarefa}',
+    '{$dataInicioTarefa}',
     '{$dataConclusaoTarefa}',
-    '{$horaConclusaoTarefa}',
     '{$dataLembreteTarefa}',
     '{$horaLembreteTarefa}',
     '{$recorrenciaTarefa}'
@@ -41,7 +41,7 @@ if($rs){
     ?>
     <div class="alert alert-success" role="alert">
   <h4 class="alert-heading">Inserir Tarefa</h4>
-  <p>Tarefa inseria com sucesso.</p>
+  <p>Tarefa inserida com sucesso.</p>
   <hr>
   <p class="mb-0">
     <a href="?menuop=tarefas">Voltar para a lista de tarefas.</a>

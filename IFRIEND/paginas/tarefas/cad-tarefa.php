@@ -15,12 +15,20 @@
         </div>
         <div class="row">
             <div class="mb-3 col-3">
-                <label for="dataConclusaoTarefa" class="form-label">Data de Conclusão</label>
-                <input class="form-control" type="date" name="dataConclusaoTarefa" id="dataConclusaoTarefa" required>
+                <label for="dataInicioTarefa" class="form-label">Data de Inicio</label>
+                <input class="form-control" type="datetime-local" name="dataInicioTarefa" id="dataInicioTarefa" required>
             </div>
+            <!--
             <div class="mb-3 col-3">
-                <label for="horaConclusaoTarefa" class="form-label">Hora de Conclusão</label>
-                <input class="form-control" type="time" name="horaConclusaoTarefa" id="horaConclusaoTarefa" required>
+                <label for="horaInicialTarefa" class="form-label">Hora de Inicio</label>
+                <input class="form-control" type="time" name="horaInicialTarefa" id="horaInicialTarefa" required>
+            </div> 
+            -->
+        </div>
+        <div class="row">
+            <div class="mb-3 col-3">
+                <label for="dataConclusaoTarefa" class="form-label">Data de Conclusão</label>
+                <input class="form-control" type="datetime-local" name="dataConclusaoTarefa" id="dataConclusaoTarefa" required>
             </div>
         </div>
         <div class="row">

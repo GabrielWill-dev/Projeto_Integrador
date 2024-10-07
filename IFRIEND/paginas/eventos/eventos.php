@@ -27,7 +27,7 @@ if (!is_null($idEvento) && !is_null($statusEvento)) {
 <div>
     <form action="index.php?menuop=eventos" method="post">
         <div class="input-group">
-            <input class="form-control" type="text" name="txt_pesquisa" value="<?=$txt_pesquisa?>">
+            <input class="form-control" type="text" name="txt_pesquisa" value="<?=$txt_pesquisa?>"placeholder="Pesquise aqui...">
             <button class="btn btn-outline-success btn-sm" type="submit"><i class="bi bi-search"></i> Pesquisar</button>
         </div>
        
