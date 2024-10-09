@@ -80,27 +80,15 @@ if (isset($_SESSION["loginUser"]) and isset($_SESSION["senhaUser"])) {
                 case 'home':
                     include("./paginas/home/calen/teste.php");
                     break;
-                //                case 'exibir-perfil2':
-//                    include("./paginas/dados/dados.php");
-//                    break;
-//                case 'cad-contato':
-//                    include("./paginas/contatos/cad-contato.php");
-//                    break;
-//                case 'inserir-contato':
-//                    include("./paginas/contatos/inserir-contato.php");
-//                    break;
                 case 'exibir-perfil':
                     include("./frontend/dados/exibir-perfil.php");
                     break;
-                //        case 'editar-contato':
-//              include("./paginas/contatos/editar-contato.php");
-//              break; 
+                case 'editar-perfil':
+                    include("./frontend/dados/editar-perfil.php");
+                    break;
                 case 'atualizar-perfil':
                     include("./backend/dados/atualizar-perfil.php");
                     break;
-                //                case 'excluir-contato':
-//                    include("./paginas/contatos/excluir-contato.php");
-//                    break;
                 case 'eventos':
                     include("./paginas/eventos/eventos.php");
                     break;
