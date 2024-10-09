@@ -33,14 +33,14 @@
             var _details = $('#event-details-modal')
             var id = info.event.id
             if (!!scheds[id]) {
-                _details.find('#title').text(scheds[id].tituloTarefa) // Corrigido para 'tituloTarefa'
-                _details.find('#descricao').text(scheds[id].descricaoTarefa) // Mantido 'descricao'
+                _details.find('#title').text(scheds[id].tituloTarefa)
+                _details.find('#descricao').text(scheds[id].descricaoTarefa)
                 _details.find('#start').text(scheds[id].sdate)
                 _details.find('#end').text(scheds[id].edate)
                 _details.find('#edit,#delete').attr('data-id', id)
                 _details.modal('show')
             } else {
-                alert("Event is undefined");
+                alert("Evento não selecionado.");
             }
             },
             eventDidMount: function(info) {
@@ -57,7 +57,7 @@
             $(this).find('input:visible').first().focus()
         })
 
-        // Botón Editar
+        // botão Editar
         $('#edit').click(function() {
             var id = $(this).attr('data-id')
             if (!!scheds[id]) {
@@ -75,13 +75,13 @@
             }
         })
 
-        // Botón Eliminar / Eliminación de un evento
+        // Botón Eliminar 
         $('#delete').click(function() {
             var id = $(this).attr('data-id')
             if (!!scheds[id]) {
                 var _conf = confirm("Tem certeza de excluir esta Tarefa?");
                 if (_conf === true) {
-                    location.href = "../../delete_tarefa.php?id=" + id;
+                    location.href = "paginas/tarefas/calendario/delete_tarefa.php?id=" + id;
                 }
             } else {
                 alert("Event is undefined");

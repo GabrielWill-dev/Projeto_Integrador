@@ -7,10 +7,10 @@
 
 </head>
 
-<body class="bg-dark">
+<body class="bg">
 
 
-        <!-- Button trigger modal -->
+    <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     Calendário
     </button>

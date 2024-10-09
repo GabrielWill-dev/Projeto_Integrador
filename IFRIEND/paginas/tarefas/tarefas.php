@@ -55,11 +55,85 @@ function verificarConclusaoAutomatica($conexao) {
 
 <header>
     <h3><i class="bi bi-list-task"></i> Tarefas</h3>
+    <link rel="stylesheet" href="paginas/tarefas/calendario/fullcalendar/lib/main.min.css">  
+    <script src="paginas/tarefas/calendario/js/jquery-3.6.0.min.js"></script>
+    <script src="paginas/tarefas/calendario/fullcalendar/lib/main.min.js"></script>
 </header>
-<div>
-    <a class="btn btn-outline-secondary mb-2" 
-    href="?menuop=cad-tarefa"><i class="bi bi-list-task"></i> Nova Tarefa</a>
-</div>
+    <div class="row">
+        <div class="col-md-auto">
+            <a class="btn btn-outline-secondary mb-2" 
+            href="?menuop=cad-tarefa"><i class="bi bi-list-task"></i> Nova Tarefa</a>
+        </div>
+    <!-- Botão Calendario Tarefa -->
+    <!-- Button trigger modal -->
+        <div class="col-md-auto">
+            <button type="button" class="col btn btn-outline-secondary mb-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <i class="bi bi-calendar-event"></i> Calendário
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="0" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Calendario de Tarefas</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="calendar"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Event Details Modal -->
+    <div class="modal fade" tabindex="-1" data-bs-backdrop="static" id="event-details-modal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-0 badge bg-success-subtle">
+                <div class="modal-header rounded-0">
+                    <h5 class="modal-title text-dark">Detalhes da Tarefa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body rounded-0">
+                    <div class="container-fluid">
+                        <dl>
+                            <dt class="text-dark">Titulo</dt>
+                            <dd id="title" class="fw-bold fs-4 text-muted"></dd>
+                            <dt class="text-dark">Descrição</dt>
+                            <dd id="descricao" class="text-muted"></dd>
+                            <dt class="text-dark">Inicio</dt>
+                            <dd id="start" class="text-muted"></dd>
+                            <dt class="text-dark">Conclusão</dt>
+                            <dd id="end" class="text-muted"></dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="modal-footer rounded-0">
+                    <div class="text-end">
+                        <button type="button" class="btn btn-primary btn-sm rounded-0" id="edit" data-id="">Atualizar</button>
+                        <button type="button" class="btn btn-danger btn-sm rounded-0" id="delete" data-id="">Excluir</button>
+                        <button type="button" class="btn btn-secondary btn-sm rounded-0" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Event Details Modal -->
+
+<?php 
+$schedules = $conexao->query("SELECT * FROM `tbtarefas`");
+$sched_res = [];
+foreach($schedules->fetch_all(MYSQLI_ASSOC) as $row){
+    $row['descricaoTarefa'];
+    $row['sdate'] = date("F d, Y h:i A",strtotime($row['dataInicioTarefa']));
+    $row['edate'] = date("F d, Y h:i A",strtotime($row['dataConclusaoTarefa']));
+    $sched_res[$row['idTarefa']] = $row;
+}
+?>
 <div>
     <form action="index.php?menuop=tarefas" method="post">
         <div class="input-group">
@@ -69,83 +143,86 @@ function verificarConclusaoAutomatica($conexao) {
        
     </form>
 </div>
-<div class="tabela">
-<table class="table table-dark table-striped table-bordered table-sm">
-    <thead>
-        <tr>
-            <th>Status</th>
-            <th>Título</th>
-            <th>Descrição</th>
-            <th>Data/hora do Inicio</th>
-            <th>Data/hora da Conclusão</th>
-            <th>Atualizar</th>
-            <th>Excluir</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-            $quantidade = 10;
-            $pagina = ( isset($_GET['pagina']) ) ?(int)$_GET['pagina']:1;
-            $inicio = ($quantidade * $pagina) - $quantidade;
 
-            
+<div class="tabela table-responsive">
+    <div class="col-md-auto">
+        <table class="table table-dark table-striped table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Título</th>
+                    <th>Descrição</th>
+                    <th>Data/hora do Inicio</th>
+                    <th>Data/hora da Conclusão</th>
+                    <th>Atualizar</th>
+                    <th>Excluir</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    $quantidade = 10;
+                    $pagina = ( isset($_GET['pagina']) ) ?(int)$_GET['pagina']:1;
+                    $inicio = ($quantidade * $pagina) - $quantidade;
 
-            $sql = "SELECT
-            idTarefa, 
-            statusTarefa,
-            tituloTarefa,
-            descricaoTarefa,
-            dataConclusaoTarefa,
-            dataInicioTarefa
-            FROM tbtarefas
-            WHERE 
-            tituloTarefa LIKE '%{$txt_pesquisa}%' OR 
-            descricaoTarefa LIKE '%{$txt_pesquisa}%' OR
-            dataInicioTarefa LIKE '%{$txt_pesquisa}%'
-            ORDER BY statusTarefa, dataInicioTarefa 
-            LIMIT $inicio, $quantidade
-            ";
-          
-            $rs = mysqli_query($conexao,$sql) 
-            or die("Erro ao executar a consulta! Erro:" . mysqli_error($conexao));
+                    
 
-            while($dados = mysqli_fetch_assoc($rs)){
-
-            
-
-        ?>
-        <tr>
-            <td>
-                <a class="btn btn-secondary btn-sm" href="index.php?menuop=tarefas&pagina=<?=$pagina?>&idTarefa=<?=$dados['idTarefa']?>&statusTarefa=<?=$dados['statusTarefa']?>" >
-                    <?php
-                        if($dados['statusTarefa']==0){
-                            echo '<button type="button" class="btn btn-danger">Não Concluido</button>';
-                        }else{
-                            echo '<button type="button" class="btn btn-success">Concluido</button>';
-                        }
-                    ?>
-                </a>   
-            </td>
-            <td class="text-nowrap"><?=$dados['tituloTarefa']?></td>
-            <td class="text-nowrap"><?=$dados['descricaoTarefa']?></td>
-            <td class="text-nowrap"><?=$dados['dataInicioTarefa']?></td>
-            <td class="text-nowrap"><?=$dados['dataConclusaoTarefa']?></td>
-
-            <td class="text-center">
-                <a class="btn btn-outline-warning btn-sm" href="index.php?menuop=editar-tarefa&idTarefa=<?=$dados['idTarefa']?>"><i class="bi bi-pencil-square"></i></a>
+                    $sql = "SELECT
+                    idTarefa, 
+                    statusTarefa,
+                    tituloTarefa,
+                    descricaoTarefa,
+                    dataConclusaoTarefa,
+                    dataInicioTarefa
+                    FROM tbtarefas
+                    WHERE 
+                    tituloTarefa LIKE '%{$txt_pesquisa}%' OR 
+                    descricaoTarefa LIKE '%{$txt_pesquisa}%' OR
+                    dataInicioTarefa LIKE '%{$txt_pesquisa}%'
+                    ORDER BY statusTarefa, dataInicioTarefa 
+                    LIMIT $inicio, $quantidade
+                    ";
                 
-            </td>
-            <td class="text-center">
-                <a class="btn btn-outline-danger btn-sm" href="index.php?menuop=excluir-tarefa&idTarefa=<?=$dados['idTarefa']?>"><i class="bi bi-trash-fill"></i></a>    
-            </td>
-            
+                    $rs = mysqli_query($conexao,$sql) 
+                    or die("Erro ao executar a consulta! Erro:" . mysqli_error($conexao));
 
-        </tr>
-        <?php
-        }
-        ?>
-    </tbody>
-</table>
+                    while($dados = mysqli_fetch_assoc($rs)){
+
+                    
+
+                ?>
+                <tr>
+                    <td>
+                        <a class="btn btn-secondary btn-sm" href="index.php?menuop=tarefas&pagina=<?=$pagina?>&idTarefa=<?=$dados['idTarefa']?>&statusTarefa=<?=$dados['statusTarefa']?>" >
+                            <?php
+                                if($dados['statusTarefa']==0){
+                                    echo '<button type="button" class="btn btn-danger">Não Concluido</button>';
+                                }else{
+                                    echo '<button type="button" class="btn btn-success">Concluido</button>';
+                                }
+                            ?>
+                        </a>   
+                    </td>
+                    <td class="text-nowrap"><?=$dados['tituloTarefa']?></td>
+                    <td class="text-nowrap"><?=$dados['descricaoTarefa']?></td>
+                    <td class="text-nowrap"><?=$dados['dataInicioTarefa']?></td>
+                    <td class="text-nowrap"><?=$dados['dataConclusaoTarefa']?></td>
+
+                    <td class="text-center">
+                        <a class="btn btn-outline-warning btn-sm" href="index.php?menuop=editar-tarefa&idTarefa=<?=$dados['idTarefa']?>"><i class="bi bi-pencil-square"></i></a>
+                        
+                    </td>
+                    <td class="text-center">
+                        <a class="btn btn-outline-danger btn-sm" href="index.php?menuop=excluir-tarefa&idTarefa=<?=$dados['idTarefa']?>"><i class="bi bi-trash-fill"></i></a>    
+                    </td>
+                    
+
+                </tr>
+                <?php
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <ul class="pagination justify-content-center">
@@ -190,3 +267,8 @@ function verificarConclusaoAutomatica($conexao) {
 
 ?>
 </ul>
+<script src="paginas/tarefas/calendario/js/pt-br.js"></script> <!--Idioma Português Fullcalendar-->
+<script>
+    var scheds = $.parseJSON('<?= json_encode($sched_res) ?>')
+</script>
+<script src="paginas/tarefas/calendario/js/script.js"></script>
