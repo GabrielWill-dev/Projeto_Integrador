@@ -11,7 +11,7 @@ $descricaoTarefa = strip_tags(mysqli_real_escape_string($conexao, $_POST['descri
 $dataInicioTarefa = strip_tags(mysqli_real_escape_string($conexao, $_POST['dataInicioTarefa']));
 $dataConclusaoTarefa = strip_tags(mysqli_real_escape_string($conexao, $_POST['dataConclusaoTarefa']));
 $dataLembreteTarefa = strip_tags(mysqli_real_escape_string($conexao, $_POST['dataLembreteTarefa']));
-$horaLembreteTarefa = strip_tags(mysqli_real_escape_string($conexao, $_POST['horaLembreteTarefa']));
+//$horaLembreteTarefa = strip_tags(mysqli_real_escape_string($conexao, $_POST['horaLembreteTarefa']));
 $recorrenciaTarefa = strip_tags(mysqli_real_escape_string($conexao, $_POST['recorrenciaTarefa']));
 
 // Inserção da tarefa inicial
@@ -22,7 +22,6 @@ $sql = "INSERT INTO tbtarefas
     dataInicioTarefa,
     dataConclusaoTarefa,
     dataLembreteTarefa,
-    horaLembreteTarefa,
     recorrenciaTarefa
 )
 VALUES
@@ -32,7 +31,6 @@ VALUES
     '{$dataInicioTarefa}',
     '{$dataConclusaoTarefa}',
     '{$dataLembreteTarefa}',
-    '{$horaLembreteTarefa}',
     '{$recorrenciaTarefa}'
 )";
 
@@ -80,7 +78,6 @@ if ($rs) {
                 dataInicioTarefa,
                 dataConclusaoTarefa,
                 dataLembreteTarefa,
-                horaLembreteTarefa,
                 recorrenciaTarefa
             )
             VALUES
@@ -90,7 +87,6 @@ if ($rs) {
                 '{$dataInicioAtual}',
                 '{$dataConclusaoAtual}',
                 '{$dataLembreteAtual}',
-                '{$horaLembreteTarefa}',
                 '{$recorrenciaTarefa}'
             )";
             

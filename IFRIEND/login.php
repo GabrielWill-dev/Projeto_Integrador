@@ -23,6 +23,7 @@
             $_SESSION["nomeUser"] = $dados["nomeUser"];
 
             header('Location: index.php');
+            exit();
 
 
         }else{

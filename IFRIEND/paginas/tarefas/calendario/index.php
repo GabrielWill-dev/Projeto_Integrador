@@ -46,7 +46,7 @@
         </div>
     </nav>
     <div class="container py-5" id="page-container">
-            <div class="col-md-9">
+            <div class="col-md-9 bg-light">
                 <div id="calendar"></div>
             </div>
     </div>

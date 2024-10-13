@@ -12,7 +12,6 @@ $descricaoTarefa = strip_tags( mysqli_real_escape_string($conexao,$_POST['descri
 $dataInicioTarefa = strip_tags( mysqli_real_escape_string($conexao,$_POST['dataInicioTarefa']));
 $dataConclusaoTarefa = strip_tags( mysqli_real_escape_string($conexao,$_POST['dataConclusaoTarefa']));
 $dataLembreteTarefa = strip_tags( mysqli_real_escape_string($conexao,$_POST['dataLembreteTarefa']));
-$horaLembreteTarefa = strip_tags( mysqli_real_escape_string($conexao,$_POST['horaLembreteTarefa']));
 $recorrenciaTarefa = strip_tags( mysqli_real_escape_string($conexao,$_POST['recorrenciaTarefa']));
 
 $sql = "UPDATE tbtarefas SET
@@ -21,7 +20,6 @@ descricaoTarefa = '{$descricaoTarefa}',
 dataConclusaoTarefa = '{$dataConclusaoTarefa}',
 dataInicioTarefa = '{$dataInicioTarefa}',
 dataLembreteTarefa = '{$dataLembreteTarefa}',
-horaLembreteTarefa = '{$horaLembreteTarefa}',
 recorrenciaTarefa = '{$recorrenciaTarefa}' 
 WHERE idTarefa = '{$idTarefa}'
 ";

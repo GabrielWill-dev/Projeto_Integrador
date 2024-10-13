@@ -30,12 +30,6 @@ $dados = mysqli_fetch_assoc($rs);
                 <label for="dataInicioTarefa" class="form-label">Data de Inicio</label>
                 <input class="form-control" type="datetime-local" name="dataInicioTarefa" id="dataInicioTarefa" value="<?=$dados["dataInicioTarefa"]?>" required>
             </div>
-            <!--
-            <div class="mb-3 col-3">
-                <label for="horaInicialTarefa" class="form-label">Hora de Inicio</label>
-                <input class="form-control" type="time" name="horaInicialTarefa" id="horaInicialTarefa" value="<?=$dados["horaInicialTarefa"]?>" required>
-            </div>
-            -->
         </div>
         <div class="row">
             <div class="mb-3 col-3">
@@ -46,11 +40,7 @@ $dados = mysqli_fetch_assoc($rs);
         <div class="row">
             <div class="mb-3 col-3">
                 <label for="dataLembreteTarefa" class="form-label">Data de Lembrete</label>
-                <input class="form-control" type="date" name="dataLembreteTarefa" id="dataLembreteTarefa" value="<?=$dados["dataLembreteTarefa"]?>" >
-            </div>
-            <div class="mb-3 col-3">
-                <label for="horaLembreteTarefa" class="form-label">Hora de Lembrete</label>
-                <input class="form-control" type="time" name="horaLembreteTarefa" id="horaLembreteTarefa" value="<?=$dados["horaLembreteTarefa"]?>">
+                <input class="form-control" type="datetime-local" name="dataLembreteTarefa" id="dataLembreteTarefa" value="<?=$dados["dataLembreteTarefa"]?>" >
             </div>
         </div>
         <div class="row">

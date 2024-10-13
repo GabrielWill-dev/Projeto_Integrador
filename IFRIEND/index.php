@@ -1,6 +1,7 @@
 <?php
 include("./db/conexao.php");
 
+
 session_start();
 if (empty($_SESSION)) {
     header("Location login.php/");
@@ -78,7 +79,7 @@ if (isset($_SESSION["loginUser"]) and isset($_SESSION["senhaUser"])) {
             $menuop = (isset($_GET['menuop'])) ? $_GET['menuop'] : 'home';
             switch ($menuop) {
                 case 'home':
-                    include("./paginas/home/calen/teste.php");
+                    include("./paginas/home/teste.php");
                     break;
                 case 'exibir-perfil':
                     include("./frontend/dados/exibir-perfil.php");
@@ -224,5 +225,7 @@ if (isset($_SESSION["loginUser"]) and isset($_SESSION["senhaUser"])) {
     </div>
     <!-- Rodapé -->
 </body>
+
+
 
 </html>
