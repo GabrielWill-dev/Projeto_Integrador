@@ -1,121 +1,234 @@
+<?php
+try {
+  // Contando Tarefas Concluídas
+  $sqlConcluidas = "SELECT COUNT(*) as totalConcluidas FROM cl203156.tbtarefas WHERE statusTarefa = 1";
+  $resultConcluidas = mysqli_query($conexao, $sqlConcluidas);
+  $dataConcluidas = mysqli_fetch_assoc($resultConcluidas);
+  $totalConcluidas = $dataConcluidas['totalConcluidas'];
+
+  // Contando Tarefas Não Concluídas
+  $sqlNaoConcluidas = "SELECT COUNT(*) as totalNaoConcluidas FROM cl203156.tbtarefas WHERE statusTarefa = 0";
+  $resultNaoConcluidas = mysqli_query($conexao, $sqlNaoConcluidas);
+  $dataNaoConcluidas = mysqli_fetch_assoc($resultNaoConcluidas);
+  $totalNaoConcluidas = $dataNaoConcluidas['totalNaoConcluidas'];
+
+  //Contando Eventos Concluídos
+  $sqlEventosConcluidas = "SELECT COUNT(*) as totalEventosConcluidas FROM cl203156.tbeventos WHERE statusEvento = 1";
+  $resultEventosConcluidas = mysqli_query($conexao, $sqlEventosConcluidas);
+  $dataEventosConcluidas = mysqli_fetch_assoc($resultEventosConcluidas);
+  $totalEventosConcluidas = $dataEventosConcluidas['totalEventosConcluidas'];
+
+  // Contando Eventos Não Concluídas
+  $sqlEventosNaoConcluidas = "SELECT COUNT(*) as totalEventosNaoConcluidas FROM cl203156.tbeventos WHERE statusEvento = 0";
+  $resultEventosNaoConcluidas = mysqli_query($conexao, $sqlEventosNaoConcluidas);
+  $dataEventosNaoConcluidas = mysqli_fetch_assoc($resultEventosNaoConcluidas);
+  $totalEventosNaoConcluidas = $dataEventosNaoConcluidas['totalEventosNaoConcluidas'];
+
+  unset($resultConcluidas);
+  unset($resultNaoConcluidas);
+  unset($resultEventosConcluidas);
+  unset($resultEventosNaoConcluidas);
+} catch (Exception $e) {
+  die("Erro: " . $e->getMessage());
+}
+?>
+
+
 <html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Getting Started with Chart JS</title>
-    <style>
-      .chartMenu {
-        width: 100vw;
-        height: 40px;
-        background: #1A1A1A;
-        color: rgba(54, 162, 235, 1);
-      }
-      .chartBox {
-        width: 700px;
-        padding: 20px;
-        border-radius: 20px;
-        border: solid 3px rgba(54, 162, 235, 1);
-        background: bg-light;
-      }
-    </style>
-  </head>
-  <body>
-      <div class="chartBox">
-        <div class="input-group">
-          <input type="date" class="form-control" onchange="startDateFilter(this)" value="2024-10-01" min="2024-01-01" max="2025-10-30">
-          <input type="date" class="form-control" onchange="endDateFilter(this)" value="2024-10-30" min="2024-01-01" max="2025-10-30">
-        </div>
-        <button onclick="filterTasks(1)">Tarefas Concluídas</button>
-        <button onclick="filterTasks(0)">Tarefas Não Concluídas</button>
-        <canvas id="myChart"></canvas>
+
+<head>
+  <!-- Montserrat Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+
+  <style>
+    .chartBox {
+      width: 400px;
+      padding: 20px;
+      border-radius: 20px;
+      border: solid 3px rgba(54, 162, 235, 1);
+      background: bg-light;
+    }
+
+    .main-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    .card-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-inner>.material-icons-outlined {
+      font-size: 45px;  
+    }
+
+    .card {
+      max-width: 18rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 15px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-cards">
+    
+    <div class="card text-bg- mb-3">
+    <a href="?menuop=tarefas" style="text-decoration: none;" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+      <div class="card-inner">
+        <h3>TAREFAS</h3>
+        <span class="material-icons-outlined"><i class="bi bi-list-task"></i></span>
       </div>
-
-      <?php 
-      try {
-        // Selecionando todas as tarefas, tanto concluídas quanto não concluídas
-        $sql = "SELECT * FROM cl203156.tbtarefas";
-        $result = mysqli_query($conexao, $sql);
-        $tasks = [];
-
-        if (mysqli_num_rows($result) > 0) {
-          while ($row = mysqli_fetch_assoc($result)) {
-            $tasks[] = $row;
-          }
-          unset($result);
-        } else {
-          echo 'Sem resultados no DB';
-        }
-      } catch (Exception $e) {
-        die("Erro: " . $e->getMessage());
-      }
-      unset($pdo);
+      <?php
+      echo "<h1><i class='bi bi-check-square'></i> $totalConcluidas</h1>";
+      echo "<p><h1><i class='bi bi-x-square'></i> $totalNaoConcluidas</h1></p>";
       ?>
+    </a>
+    </div>
+    
+    <div class="card text-bg-primary mb-3">
+    <a href="?menuop=eventos" style="text-decoration: none;" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+      <div class="card-inner">
+        <h3>EVENTOS</h3>
+        <span class="material-icons-outlined"><i class="bi bi-calendar-check"></i></span>
+      </div>
+      <?php
+      echo "<h1><i class='bi bi-check-square'></i> $totalEventosConcluidas</h1>";
+      echo "<p><h1><i class='bi bi-x-square'></i> $totalEventosNaoConcluidas</h1></p>";
+      ?>
+      </a>
+    </div>
+    
 
-      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
-      <script>
-        // Função para filtrar tarefas
-        function filterTasks(status) {
-          const filteredTasks = tasks.filter(task => task.statusTarefa == status);
-          updateChart(filteredTasks);
+    <div class="card text-bg-success mb-3" style="max-width: 18rem;">
+      <div class="card-header">
+        <h3>Header</h3>
+      </div>
+      <div class="card-inner">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+      </div>
+    </div>
+    
+    <div class="card text-bg-success mb-3" style="max-width: 18rem;">
+      <div class="card-inner">
+        <h3>Header</h3>
+      </div>
+      <div class="card-body">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+      </div>
+    </div>
+
+    <div class="chartBox">
+      <div class="input-group">
+        <input type="date" class="form-control text-bg-secondary" onchange="startDateFilter(this)" value="2024-10-01"
+          min="2024-01-01" max="2025-10-30">
+        <input type="date" class="form-control text-bg-secondary" onchange="endDateFilter(this)" value="2024-10-30"
+          min="2024-01-01" max="2025-10-30">
+      </div>
+      <canvas id="myChart"></canvas>
+    </div>
+
+    <?php
+    try {
+      // Ajustando a consulta para trazer apenas tarefas concluídas (statusTarefa = 1)
+      $sql = "SELECT dataConclusaoTarefa FROM cl203156.tbtarefas WHERE statusTarefa = 1";
+      $result = mysqli_query($conexao, $sql);
+
+      $dateArray = [];
+      if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+          $dateArray[] = $row["dataConclusaoTarefa"];
         }
+        unset($result);
+      } else {
+        echo 'Sem resultados no DB';
+      }
+    } catch (Exception $e) {
+      die("Erro: " . $e->getMessage());
+    }
+    unset($pdo);
+    ?>
 
-        // Inicializando tarefas
-        const tasks = <?php echo json_encode($tasks); ?>;
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
+    <script>
+      const dateArrayJS = <?php echo json_encode($dateArray); ?>;
 
-        // Configuração do gráfico
-        const myChart = new Chart(document.getElementById('myChart'), {
-          type: 'bar',
-          data: {
-            datasets: [],
-          },
-          options: {
-            scales: {
-              x: {
-                type: 'time',
-                time: {
-                  unit: 'day'
-                },
-                min: new Date('2024-10-01'),
-                max: new Date('2024-10-30'),
+      // Contando o número de tarefas concluídas por data
+      const taskCounts = dateArrayJS.reduce((acc, date) => {
+        const formattedDate = new Date(date).toISOString().split('T')[0]; // Formata a data para 'YYYY-MM-DD'
+        acc[formattedDate] = (acc[formattedDate] || 0) + 1; // Incrementa a contagem para a data
+        return acc;
+      }, {});
+
+      // Convertendo para arrays para o gráfico
+      const labels = Object.keys(taskCounts).map(date => new Date(date));
+      const dataCounts = Object.values(taskCounts);
+
+      // Setup 
+      const data = {
+        labels: labels,
+        datasets: [{
+          label: 'Tarefas Concluídas',
+          data: dataCounts,
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }]
+      };
+
+      // Config 
+      const config = {
+        type: 'bar',
+        data,
+        options: {
+          scales: {
+            x: {
+              type: 'time',
+              time: {
+                unit: 'day'
               },
-              y: {
-                beginAtZero: true
-              }
+              min: new Date('2024-10-01'),
+              max: new Date('2024-10-30'),
+            },
+            y: {
+              beginAtZero: true
             }
           }
-        });
-
-        // Atualiza o gráfico com as tarefas filtradas
-        function updateChart(filteredTasks) {
-          const data = {
-            datasets: [{
-              label: filteredTasks.length >= 0 ? (filteredTasks[0].statusTarefa == 1 ? 'Tarefas Concluídas' : 'Tarefas Não Concluídas') : 'Nenhuma Tarefa',
-              data: filteredTasks.map(task => ({
-                x: new Date(task.dataConclusaoTarefa),
-                y: task.statusTarefa
-              })),
-              backgroundColor: filteredTasks[0].statusTarefa == 1 ? 'rgba(54, 162, 235, 0.2)' : 'rgba(255, 26, 104, 0.2)',
-              borderColor: filteredTasks[0].statusTarefa == 1 ? 'rgba(54, 162, 235, 1)' : 'rgba(255, 26, 104, 1)',
-              borderWidth: 1
-            }]
-          };
-
-          myChart.data = data;
-          myChart.update();
         }
+      };
 
-        function startDateFilter(date) {
-          const startDate = new Date(date.value);
-          myChart.config.options.scales.x.min = startDate;
-          myChart.update();
-        }
+      // Render init block
+      const myChart = new Chart(document.getElementById('myChart'), config);
 
-        function endDateFilter(date) {
-          const endDate = new Date(date.value);
-          myChart.config.options.scales.x.max = endDate;
-          myChart.update();
-        }
-      </script>
-  </body>
+      function startDateFilter(date) {
+        const startDate = new Date(date.value);
+        myChart.config.options.scales.x.min = startDate;
+        myChart.update();
+      }
+
+      function endDateFilter(date) {
+        const endDate = new Date(date.value);
+        myChart.config.options.scales.x.max = endDate;
+        myChart.update();
+      }
+    </script>
+</body>
+
 </html>

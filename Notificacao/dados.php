@@ -5,17 +5,17 @@ require_once("vendor/autoload.php");
 use Minishlink\WebPush\Subscription;
 use Minishlink\WebPush\WebPush;
 
-while (true) {
     // Verificar a conexão
     if ($conexao->connect_error) {
         die("Erro de conexão: " . $conexao->connect_error);
     }
 
     // Obter a data e hora atuais
-    $dataAtual = date('Y-m-d H:i:s');
+    date_default_timezone_set('America/Sao_Paulo');
+    $dataAtual = date('Y-m-d H:i');
 
     // Executar a consulta para pegar os dados da tarefa
-    $sql = "SELECT * FROM tbtarefas WHERE dataLembreteTarefa <= '$dataAtual'";
+    $sql = "SELECT * FROM tbtarefas WHERE dataLembreteTarefa = '$dataAtual'";
     $result = $conexao->query($sql);
 
     // Verificar se há resultados
@@ -37,6 +37,7 @@ while (true) {
                     'privateKey' => 'tewdCyOiF4aDxAz4KrreUbUNPstsweCrUnhMuKjnnuE',
                 ],
             ];
+
     
             $webPush = new WebPush($auth);
     
@@ -58,13 +59,13 @@ while (true) {
                     'body' => $body,
                     'url' => '../Projeto_Integrador/IFRIEND/index.php?menuop=tarefas'
                 ]),
-                ['TTL' => 5000]
+                ['TTL' => 1000]
             );
+            echo json_encode(["Enviado" => $row], JSON_PRETTY_PRINT);
             }
         }else {
         echo json_encode(["mensagem" => "Nenhum dado encontrado"], JSON_PRETTY_PRINT);
     }
     // Esperar 5 minutos antes de verificar novamente
-    //sleep(300); // 300 segundos
-}
+    //sleep(5); // 5 segundos
 ?>

@@ -43,6 +43,24 @@ if (isset($_SESSION["loginUser"]) and isset($_SESSION["senhaUser"])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="shortcut icon" type="" href="img/favicon.ico" />
     <title>iFriend</title>
+    <script>
+        setInterval(() => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', '../Notificacao/dados.php', true);
+
+            xhr.onload = function () {
+                if (xhr.status >= 200 && xhr.status < 300)
+                    console.log(xhr.responseText);  // Processa a resposta
+                else
+                    console.error('Erro na requisição:', xhr.statusText);
+            };
+
+            xhr.onerror = () => console.error('Erro de rede.');
+
+            xhr.send();
+
+        }, 30000);
+    </script>
 </head>
 
 <body>
