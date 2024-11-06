@@ -18,7 +18,7 @@
         {
             themeSystem: 'bootstrap5',
             initialView: 'dayGridMonth',
-            locale: 'pt-br', //Idioma Español FullCalendar
+            locale: 'pt-br',
             headerToolbar: {
                 left: 'prev,next today',
                 right: 'dayGridMonth,dayGridWeek,list',
@@ -70,19 +70,6 @@
                 _form.find('[name="end_datetime"]').val(String(scheds[id].end_datetime).replace(" ", "T"))
                 $('#event-details-modal').modal('hide')
                 _form.find('[name="title"]').focus()
-            } else {
-                alert("Event is undefined");
-            }
-        })
-
-        // Botón Eliminar 
-        $('#delete').click(function() {
-            var id = $(this).attr('data-id')
-            if (!!scheds[id]) {
-                var _conf = confirm("Tem certeza de excluir esta Tarefa?");
-                if (_conf === true) {
-                    location.href = "paginas/tarefas/calendario/delete_tarefa.php?id=" + id;
-                }
             } else {
                 alert("Event is undefined");
             }
