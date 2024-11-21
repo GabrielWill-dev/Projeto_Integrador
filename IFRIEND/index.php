@@ -97,7 +97,7 @@ if (isset($_SESSION["loginUser"]) and isset($_SESSION["senhaUser"])) {
             $menuop = (isset($_GET['menuop'])) ? $_GET['menuop'] : 'home';
             switch ($menuop) {
                 case 'home':
-                    include("./paginas/home/teste.php");
+                    include("./paginas/home/home.php");
                     break;
                 case 'exibir-perfil':
                     include("./frontend/dados/exibir-perfil.php");
