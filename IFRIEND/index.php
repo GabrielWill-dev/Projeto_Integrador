@@ -38,7 +38,8 @@ if (isset($_SESSION["loginUser"]) and isset($_SESSION["senhaUser"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/estilo-padrao.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="shortcut icon" type="" href="img/favicon.ico" />
@@ -158,7 +159,9 @@ if (isset($_SESSION["loginUser"]) and isset($_SESSION["senhaUser"])) {
     <script src="./js/upload.js"></script>
     <script src="./js/javascript-agendador.js"></script>
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     <script src="./js/validation.js"></script>
 
     <!-- Rodapé -->
@@ -183,8 +186,8 @@ if (isset($_SESSION["loginUser"]) and isset($_SESSION["senhaUser"])) {
                                 <i class="fas fa-gem me-3"></i>I Friend
                             </h6>
                             <p>
-                                Aqui você pode usar linhas e colunas para organizar o conteúdo do rodapé. Lorem ipsum
-                                dolor sit amet, consectetur adipisicing elit.
+                                O projeto iFriend demonstra o potencial das tecnologias emergentes para
+                                melhorar a gestão do tempo e a produtividade pessoal.
                             </p>
                         </div>
                         <!-- Coluna da grade -->

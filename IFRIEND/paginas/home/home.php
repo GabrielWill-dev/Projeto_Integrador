@@ -123,9 +123,9 @@ while ($row = $schedules->fetch_assoc()) {
 
     <div class="chartBox">
       <div class="input-group">
-        <input type="date" class="form-control text-bg-secondary" onchange="startDateFilter(this)" value="2024-10-01"
+        <input type="date" class="form-control text-bg-secondary" onchange="startDateFilter(this)" value="2024-11-01"
           min="2024-01-01" max="2025-10-30">
-        <input type="date" class="form-control text-bg-secondary" onchange="endDateFilter(this)" value="2024-10-30"
+        <input type="date" class="form-control text-bg-secondary" onchange="endDateFilter(this)" value="2024-11-30"
           min="2024-01-01" max="2025-10-30">
       </div>
       <canvas id="myChart"></canvas>
